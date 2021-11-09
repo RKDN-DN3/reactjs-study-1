@@ -1,6 +1,6 @@
 import React,{ Component} from 'react';
-import { demoAsyncCall } from '../Common/CommonFunction';
-import {AppContext} from '../App';
+import { demoAsyncCall } from '../../Common/CommonFunction';
+import {AppContext} from './App';
 class ComC extends Component{  
     constructor(props){
         super(props);

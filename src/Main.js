@@ -1,16 +1,16 @@
 import React,{Component,useImperativeHandle,useState,useMemo } from 'react';
 import './index.css';
 import Handle from './components/Handle';
-import App from './App';
-import App1 from './components/Render/App1';
-import App2 from './components/Props/App2';
+import App from './components/Home/App';
+import AppRender from './components/Render/AppRender';
 import App3 from './components/UseMemo/App3';
 import App4 from './components/UseCallback/App4';
 import App5 from './components/Context/App5';
+import InputFormStore from './stores/InputPage';
+import RenderPage from './stores/RenderPage';
+import PropsPage from './stores/PropsPage';
 import { CalculateFactorial } from './components/UseMemo/App3';
 import Demo from './components/Demo/Demo';
-import FormInput from './components/FormInput/FormInput';
-import ComA from './components/ComA';
 import { BrowserRouter as BrowserRouter,Route, Link  ,Routes ,Router } from 'react-router-dom'
 
 class Main extends Component{
@@ -23,7 +23,7 @@ class Main extends Component{
                     path:"/",
                     element:<App/>,
                     isActive: false
-                },                    
+                },       
                 {
                     name:"Context",
                     path:"Context",
@@ -35,35 +35,29 @@ class Main extends Component{
                     path:"UserCallback",
                     element:<App4/>,
                     isActive: false
-                },        
-                // {
-                //     name:"UseMemo",
-                //     path:"UseMemo",
-                //     element:<App3/>,
-                //     isActive: false
-                // },  
+                },                       
                 {
                     name:"UseMemo",
                     path:"Memo2",
                     element:<CalculateFactorial/>,
                     isActive: false
-                },         
+                },   
                 {
                     name:"Props",
                     path:"Props",
-                    element:<App2/>,
+                    element:<PropsPage/>,
                     isActive: false
-                },        
+                },  
                 {
                     name:"Render",
                     path:"Render",
-                    element:<App1/>,
+                    element:<RenderPage/>,
                     isActive: false
-                },               
+                },        
                 {
                     name:"FormInput",
                     path:"FormInput",
-                    element:<FormInput/>,
+                    element:<InputFormStore/>,
                     isActive: false
                 },
                 {

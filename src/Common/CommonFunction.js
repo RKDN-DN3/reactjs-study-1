@@ -18,3 +18,11 @@ export function showLoading(isLoading){
         </h4>)
     }
 }
+export function showBtnOnClick(onClick){
+    if(onClick)
+    {
+        return (
+            <a className="btn btn-primary btn-sm m-lg-2" onClick={onClick} role="button">OnClick</a>
+        )
+    }
+}

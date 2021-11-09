@@ -1,8 +1,9 @@
 import React,{ Component} from 'react';
-import ComC from './ComC';
-import { demoAsyncCall,showTimeRender } from '../Common/CommonFunction';
+import ComB from './ComB';
+import { demoAsyncCall } from '../../Common/CommonFunction';
 
-class ComB extends Component {  
+const style= {display:"flex"};
+class ComA extends Component{  
     constructor(props){
         super(props);
         this.state={
@@ -14,12 +15,13 @@ class ComB extends Component {
     componentDidMount() {
         // this simulates an async action, after which the component will render the content
         demoAsyncCall().then(() => this.setState({ _loading: false }));
+        //this.props.hideLoader();
     }
     updateCountState=()=>{
         this.setState({
             _countState:this.state._countState+1,
         })        
-    }
+    }    
     updateCountprops=()=>{
         this.setState({
             _countProps:this.state._countProps+1,
@@ -32,27 +34,39 @@ class ComB extends Component {
                 Loading...                
             </h3>)
         }
-    }   
+    }
+    showTimeRender(){
+        var dateNow= new Date();
+        return(<div>
+           <h4>Date: {dateNow.toLocaleTimeString()}</h4>
+        </div>)
+    }
+    
     render(){
-        const { _loading } = this.state;      
+        const { _loading } = this.state;    
+        //const style= {display:"flex"};
         return (
-        <div className="ml-30" style={{backgroundColor:"blanchedalmond"}}>
-            {showTimeRender()}
-            {this.showInfo(_loading)}
-           <h1>memo(Compo {this.props.name} {this.props.children})</h1>
+            
+        <div className="ml-30" style={{backgroundColor:"aqua"}}>    
+            {this.showTimeRender()}       
+            {this.showInfo(_loading)}            
+           <h1>Component A State {this.props.children}</h1>
            <div>
                 <h3>
                     Count:{this.state._countState}
                 </h3>
                 <a className="btn btn-primary btn-sm " onClick={this.updateCountState} role="button">Update State</a>
                 {/* <a className="btn btn-secondary btn-sm " onClick={this.updateCountprops} role="button">Update Props</a> */}
-            </div>         
-            <ComC onClick={()=>this.updateCountState()} >
+            </div>
+            <ComB name="B" style={style}>
                 {this.props.children}
-            </ComC>
+            </ComB>
+            
+            
         </div>
         )
     }
 }
 
-export default React.memo(ComB);
+export default ComA;
+

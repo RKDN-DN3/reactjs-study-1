@@ -1,9 +1,8 @@
 import React,{Component,useImperativeHandle,useState,useMemo } from 'react';
-import './index.css';
-import Handle from './components/Handle';
-import Demo from './components/Demo/Demo';
-import ComA from './components/ComA';
-import { demoAsyncCall } from './Common/CommonFunction';
+import '../../index.css';
+import Handle from '../Handle';
+import ComA from './ComA';
+import { demoAsyncCall } from '../../Common/CommonFunction';
 
 
 export const AppContext = React.createContext({});

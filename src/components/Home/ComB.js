@@ -1,8 +1,8 @@
 import React,{ Component} from 'react';
-import ComC1 from './ComC1';
-import { demoAsyncCall,showTimeRender,showLoading } from '../../Common/CommonFunction';
+import ComC from './ComC';
+import { demoAsyncCall,showTimeRender } from '../../Common/CommonFunction';
 
-class ComB1 extends Component {  
+class ComB extends Component {  
     constructor(props){
         super(props);
         this.state={
@@ -24,33 +24,35 @@ class ComB1 extends Component {
         this.setState({
             _countProps:this.state._countProps+1,
         })        
+    }
+    showInfo(isLoading){
+        if(isLoading){
+            return ( 
+            <h3 style={{color:"red"}}>
+                Loading...                
+            </h3>)
+        }
     }   
-       render(){
+    render(){
         const { _loading } = this.state;      
         return (
-        <div className="m-30 div-border" style={{backgroundColor:"blanchedalmond"}}>
-            <div className="ml-30">
-            {showLoading(_loading)}
-            <h2>memo(Compo {this.props.name} {this.props.children})</h2>
-            {showTimeRender()}            
-          
+        <div className="ml-30" style={{backgroundColor:"blanchedalmond"}}>
+            {showTimeRender()}
+            {this.showInfo(_loading)}
+           <h1>memo(Compo {this.props.name} {this.props.children})</h1>
            <div>
-                <table>
-                    <tr>
-                        <td className="color">STATE</td>
-                        <td>Count: {this.state._countState}</td>
-                    </tr>                        
-                </table>
-                <a className="btn btn-primary btn-sm m-lg-2" onClick={this.updateCountState} role="button">Update State</a>
+                <h3>
+                    Count:{this.state._countState}
+                </h3>
+                <a className="btn btn-primary btn-sm " onClick={this.updateCountState} role="button">Update State</a>
                 {/* <a className="btn btn-secondary btn-sm " onClick={this.updateCountprops} role="button">Update Props</a> */}
             </div>         
-            <ComC1 onClick={()=>this.updateCountState()} >
+            <ComC onClick={()=>this.updateCountState()} >
                 {this.props.children}
-            </ComC1>
-            </div>
+            </ComC>
         </div>
         )
     }
 }
 
-export default React.memo(ComB1);
+export default React.memo(ComB);
