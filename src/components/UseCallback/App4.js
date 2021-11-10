@@ -47,9 +47,8 @@ class App4 extends Component{
         })        
     }   
     handleClick() {
-        alert('NamNN');
-        
-      }  
+        alert('NamNN');    
+    }  
     render(){   
         const styleInSide= {display:"flex"}; 
         var { _countState } = this.state;  
